@@ -4,17 +4,21 @@ import math
 
 black = "black"
 white = "white"
-EMPTY = None
+white_king = "white king"
+black_king = "black king"
+
+EMPTY_BLACK = None
+EMPTY_WHITE = None
 
 def initial_board():
-    return [[white, white, white, white, white, white, white, white]
-            [white, white, white, white, white, white, white, white]
-            [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
-            [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
-            [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
-            [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]
-            [black, black, black, black, black, black, black, black]
-            [black, black, black, black, black, black, black, black]]
+    return [[EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white]
+            [white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE]
+            [EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK]
+            [EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE]
+            [EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK]
+            [EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE]
+            [EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black]
+            [black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE]]
 
 def player(board):
     """
@@ -38,7 +42,23 @@ def actions(board):
     """
     Returns set of available actions
     """
-    actions_set = set()
+    white_actions_set = set()
+    black_actions_set = set()
+
+    # simple move
+    for i in board:
+        for j in i:
+            legal_white_move = [i + 1][j - 1] or board[i + 1][j + 1]
+            legal_black_move = [i - 1][j - 1] or board[i - 1][j + 1]
+            if j == white:
+                if board[legal_white_move] == EMPTY_BLACK:
+                    action_to_add = board[legal_white_move]
+                    white_actions_set.add(action_to_add)
+            
+            if j == black:
+                if board[legal_black_move] == EMPTY_BLACK:
+                    action_to_add = board[legal_black_move]
+                    black_actions_set.add(action_to_add)
 
 def result(board, action):
     """
