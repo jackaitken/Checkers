@@ -63,5 +63,15 @@ while 1:
         screen.blit(play_black, play_black_rect)
                         
         # need to create click events
+        click, _, _ = pygame.mouse.get_pressed()
+        if click == 1:
+            mouse_pos = pygame.mouse.get_pos()
+            if play_black_button.collidepoint(mouse_pos):
+                time.sleep(0.2)
+                user = helpers.black
+            elif play_white_button.collidepoint(mouse_pos):
+                time.sleep(0.2)
+                user = helpers.white
             
+        print(user)
         pygame.display.update()
