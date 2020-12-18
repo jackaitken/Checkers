@@ -1,7 +1,22 @@
-import pygame, sys, time, constants
-from checkers_lib.constants import size
+import pygame, sys, time
+from checkers.checkers_lib.board import Board
 
 pygame.init()
+
+# game board
+size = WIDTH, HEIGHT = 800, 800
+ROWS, COLS = 8, 8
+SQUARE_SIZE = WIDTH // COLS
+
+BROWN = (195, 155, 119)
+DARK_BROWN = (128, 96, 77)
+WHITE = (255, 255, 255)
+RED = (150, 0, 24)
+
+# game pieces
+black_piece = pygame.image.load("icons/black_piece.png")
+white_piece = pygame.image.load("icons/white_piece.png")
+
 
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Checkers")
