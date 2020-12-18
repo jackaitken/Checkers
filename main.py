@@ -73,5 +73,4 @@ while 1:
                 time.sleep(0.2)
                 user = helpers.white
             
-        print(user)
         pygame.display.update()
