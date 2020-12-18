@@ -14,15 +14,15 @@ WHITE = (255, 255, 255)
 RED = (150, 0, 24)
 
 # game pieces
-black_piece = pygame.image.load("icons/black_piece.png")
-white_piece = pygame.image.load("icons/white_piece.png")
+black_piece = pygame.image.load("icons_and_fonts/black_piece.png")
+white_piece = pygame.image.load("icons_and_fonts/white_piece.png")
 
 
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Checkers")
 
-title_font = pygame.font.Font("Quicksand-VariableFont_wght.ttf", 64)
-play_as_font = pygame.font.Font("Quicksand-VariableFont_wght.ttf", 42)
+title_font = pygame.font.Font("icons_and_fonts/Quicksand-VariableFont_wght.ttf", 64)
+play_as_font = pygame.font.Font("icons_and_fonts/Quicksand-VariableFont_wght.ttf", 42)
 
 user = None
 # board = checkers.initial_state()
