@@ -59,5 +59,23 @@ while 1:
     # after user is chosen, game begins
     else:
         h.fill_empty_board()
+        
+        # draw black pieces
+        y_coord = -50
+        for row in range(2):
+            x_coord = 50
+            y_coord += 100
+            for col in range(8):
+                pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
+                x_coord += 100
+
+        # draw white pieces
+        y_coord = 550
+        for row in range(2):
+            x_coord = 50
+            y_coord += 100
+            for col in range(8):
+                pygame.draw.circle(h.screen, h.WHITE, (x_coord, y_coord), 40)
+                x_coord += 100
 
     pygame.display.update()
