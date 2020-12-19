@@ -13,7 +13,7 @@ title_font = pygame.font.Font("icons_and_fonts/Quicksand-VariableFont_wght.ttf",
 play_as_font = pygame.font.Font("icons_and_fonts/Quicksand-VariableFont_wght.ttf", 42)
 
 user = None
-# board = h.initial_board()
+board = h.initial_board()
 ai_turn = False
 
 while 1:
@@ -46,17 +46,14 @@ while 1:
         h.screen.blit(play_black, play_black_rect)
                         
         # handles user choice
-        click, _, _ = pygame.mouse.get_pressed()
-        if click == 1:
+        if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
             if play_black_button.collidepoint(mouse_pos):
-                time.sleep(0.2)
                 user = h.black
             elif play_white_button.collidepoint(mouse_pos):
-                time.sleep(0.2)
                 user = h.white
     
-    # after user is chosen, game begins
+    # after user is chosen, draw board
     else:
         h.fill_empty_board()
         
@@ -90,4 +87,6 @@ while 1:
                 else:
                     x_coord += 100
 
+        #checks if user clicked on piece
+         
     pygame.display.update()
