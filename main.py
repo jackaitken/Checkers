@@ -66,8 +66,14 @@ while 1:
             x_coord = 50
             y_coord += 100
             for col in range(8):
-                pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
-                x_coord += 100
+                if row == 0 and col % 2 == 1:
+                    pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
+                    x_coord += 100
+                elif row == 1 and col % 2 == 0:
+                    pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
+                    x_coord += 100
+                else:
+                    x_coord += 100
 
         # draw white pieces
         y_coord = 550
@@ -75,7 +81,13 @@ while 1:
             x_coord = 50
             y_coord += 100
             for col in range(8):
-                pygame.draw.circle(h.screen, h.WHITE, (x_coord, y_coord), 40)
-                x_coord += 100
+                if row == 0 and col % 2 == 1:
+                    pygame.draw.circle(h.screen, h.WHITE, (x_coord, y_coord), 40)
+                    x_coord += 100
+                elif row == 1 and col % 2 == 0:
+                    pygame.draw.circle(h.screen, h.WHITE, (x_coord, y_coord), 40)
+                    x_coord += 100
+                else:
+                    x_coord += 100
 
     pygame.display.update()
