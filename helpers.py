@@ -7,8 +7,30 @@ white = "white"
 white_king = "white king"
 black_king = "black king"
 
+size = WIDTH, HEIGHT = 800, 800
+ROWS, COLS = 8, 8
+SQUARE_SIZE = WIDTH // COLS
+
+BROWN = (195, 155, 119)
+DARK_BROWN = (128, 96, 77)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED = (150, 0, 24)
+
 EMPTY_BLACK = None
 EMPTY_WHITE = None
+
+screen = pygame.display.set_mode(size)
+
+def fill_empty_board():
+    """
+    Returns empty board with no pieces
+    """
+    screen.fill(BROWN)
+    for row in range(ROWS):
+        for col in range(row % 2, ROWS, 2):
+            pygame.draw.rect(screen, DARK_BROWN, (row * SQUARE_SIZE, col * SQUARE_SIZE, 
+                            SQUARE_SIZE, SQUARE_SIZE))
 
 def initial_board():
     return [[EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white]
