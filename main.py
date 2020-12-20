@@ -64,7 +64,7 @@ while 1:
             y_coord += 100
             for col in range(8):
                 if row == 0 and col % 2 == 1:
-                    pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
+                    pygame.draw.circle(h.screen, h.BLACK,(x_coord, y_coord), 40)
                     x_coord += 100
                 elif row == 1 and col % 2 == 0:
                     pygame.draw.circle(h.screen, h.BLACK, (x_coord, y_coord), 40)
@@ -88,5 +88,12 @@ while 1:
                     x_coord += 100
 
         #checks if user clicked on piece
-         
+            for row in range(8):
+                for col in range(8):
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        mouse_pos = pygame.mouse.get_pos()
+                        if mouse_pos[0] >= col * 100 and mouse_pos[1] >= row * 100:
+                            selected_piece = (col, row)
+                            print(selected_piece)
     pygame.display.update()
+        
