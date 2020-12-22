@@ -33,14 +33,14 @@ def fill_empty_board():
                             SQUARE_SIZE, SQUARE_SIZE))
 
 def initial_board():
-    return [[EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white],
-            [white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE],
+    return [[EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black],
+            [black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE],
             [EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK],
             [EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE],
             [EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK],
             [EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE, EMPTY_BLACK, EMPTY_WHITE],
-            [EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black],
-            [black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE, black, EMPTY_WHITE]]
+            [EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white],
+            [white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE, white, EMPTY_WHITE]]
 
 def player(board):
     """
