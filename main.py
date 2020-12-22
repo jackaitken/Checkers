@@ -87,13 +87,23 @@ while 1:
                 else:
                     x_coord += 100
 
-        #checks if user clicked on piece
-            for row in range(8):
-                for col in range(8):
-                    if event.type == pygame.MOUSEBUTTONDOWN:
-                        mouse_pos = pygame.mouse.get_pos()
-                        if mouse_pos[0] >= col * 100 and mouse_pos[1] >= row * 100:
-                            selected_piece = (col, row)
-                            print(selected_piece)
+        #testing for row and col position
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            for i in mouse_pos:
+                if (mouse_pos[0] / 100) > 1:
+                    if (mouse_pos[1] / 100) > 1:
+                        print("not in 0 col or row")
+                        break
+                    else:
+                        print("in 0 row, but not in 0 col")
+                        break
+                else:
+                    if (mouse_pos[1] / 100) > 1:
+                        print("in 0 col not in 0 row")
+                        break
+                    else:
+                        print("in 0 row and 0 col")
+                        break
+
     pygame.display.update()
-        
