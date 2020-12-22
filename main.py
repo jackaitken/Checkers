@@ -1,5 +1,6 @@
 import pygame, sys, time
 import helpers as h
+import math
 
 pygame.init()
 
@@ -87,23 +88,13 @@ while 1:
                 else:
                     x_coord += 100
 
-        #testing for row and col position
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = pygame.mouse.get_pos()
-            for i in mouse_pos:
-                if (mouse_pos[0] / 100) > 1:
-                    if (mouse_pos[1] / 100) > 1:
-                        print("not in 0 col or row")
-                        break
-                    else:
-                        print("in 0 row, but not in 0 col")
-                        break
-                else:
-                    if (mouse_pos[1] / 100) > 1:
-                        print("in 0 col not in 0 row")
-                        break
-                    else:
-                        print("in 0 row and 0 col")
-                        break
+    #get row, col of click event
+    if event.type == pygame.MOUSEBUTTONUP:
+        mouse_pos = pygame.mouse.get_pos()
+        for i in mouse_pos:
+            col = math.trunc(mouse_pos[0] / 100)
+            row = math.trunc(mouse_pos[1] / 100)
+            if board[row][col] == user:
+                selected_piece = board[row][col]
 
     pygame.display.update()
