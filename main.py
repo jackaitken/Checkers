@@ -95,6 +95,6 @@ while 1:
             col = math.trunc(mouse_pos[0] / 100)
             row = math.trunc(mouse_pos[1] / 100)
             if board[row][col] == user:
-                selected_piece = board[row][col]
+                print(h.actions(board, col, row, user))
 
     pygame.display.update()

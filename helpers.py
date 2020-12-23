@@ -60,27 +60,21 @@ def player(board):
     else:
         return white
 
-def actions(board, current_position):
+def actions(board, col, row, user):
     """
     Returns set of available actions
     """
     white_actions_set = set()
     black_actions_set = set()
 
-    # simple move
-    for i in board:
-        for j in i:
-            legal_white_move = [i + 1][j - 1] or board[i + 1][j + 1]
-            legal_black_move = [i - 1][j - 1] or board[i - 1][j + 1]
-            if j == white:
-                if board[legal_white_move] == EMPTY_BLACK:
-                    action_to_add = board[legal_white_move]
-                    white_actions_set.add(action_to_add)
-            
-            if j == black:
-                if board[legal_black_move] == EMPTY_BLACK:
-                    action_to_add = board[legal_black_move]
-                    black_actions_set.add(action_to_add)
+    # check if piece is not on edge of board
+    if col != 0 and col != 7:
+        if user is white:
+            northwest = (row - 1, col - 1)
+            white_actions_set.add(northwest)
+            northeast = (row - 1, col + 1)
+            white_actions_set.add(northeast)
+            return white_actions_set
 
 def result(board, action):
     """
