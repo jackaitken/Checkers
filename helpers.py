@@ -60,7 +60,7 @@ def player(board):
     else:
         return white
 
-def actions(board):
+def actions(board, current_position):
     """
     Returns set of available actions
     """
