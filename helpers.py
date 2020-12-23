@@ -114,7 +114,7 @@ def actions(board, col, row, user):
                 
             else:
                 southwest = (row + 1, col - 1)
-                if board[row - 1][col + 1] != user:
+                if board[row + 1][col - 1] != user:
                     white_actions_set.add(southwest)
                 
             return white_actions_set
