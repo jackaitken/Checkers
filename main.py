@@ -95,6 +95,13 @@ while 1:
             col = math.trunc(mouse_pos[0] / 100)
             row = math.trunc(mouse_pos[1] / 100)
             if board[row][col] == user:
-                print(h.actions(board, col, row, user))
+                actions_set = h.actions(board, col, row, user)
+                
+                # shows legal moves
+                for move in actions_set:
+                    pygame.draw.rect(
+                        h.screen, h.RED, (move[1] * h.SQUARE_SIZE, move[0] * h.SQUARE_SIZE, 
+                        h.SQUARE_SIZE, h.SQUARE_SIZE)
+                    )
 
     pygame.display.update()
