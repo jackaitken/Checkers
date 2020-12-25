@@ -53,6 +53,7 @@ while 1:
                 user = h.black
             elif play_white_button.collidepoint(mouse_pos):
                 user = h.white
+                ai_turn = True
     
     # after user is chosen, draw board
     else:
@@ -88,18 +89,31 @@ while 1:
                 else:
                     x_coord += 100
 
-        #get row, col of click event
-        if event.type == pygame.MOUSEBUTTONUP:
-            mouse_pos = pygame.mouse.get_pos()
-            col = math.trunc(mouse_pos[0] / 100)
-            row = math.trunc(mouse_pos[1] / 100)
-            if board[row][col] == user:
-                actions_set = h.actions(board, col, row, user)
+        if ai_turn:
+            pass
 
-                # shows legal moves
-                for move in actions_set:
-                    pygame.draw.rect(
-                        h.screen, h.RED, (move[1] * h.SQUARE_SIZE, move[0] * h.SQUARE_SIZE, 
-                        h.SQUARE_SIZE, h.SQUARE_SIZE)
-                    )
+        #get row and column of click event
+        
+        else:
+            second_click = False
+
+            if event.type == pygame.MOUSEBUTTONUP and not second_click:
+                    mouse_pos = pygame.mouse.get_pos()
+                    col = math.trunc(mouse_pos[0] / 100)
+                    row = math.trunc(mouse_pos[1] / 100)
+                    col_row = (col, row)
+
+                    if board[row][col] == user:
+                        first_click = True
+                        available_actions = h.actions(board, col, row, user)
+
+                        #shows possible legal moves
+                        for move in available_actions:
+                            pygame.draw.rect(
+                                h.screen, h.RED, (move[1] * h.SQUARE_SIZE, move[0] * h.SQUARE_SIZE, 
+                                h.SQUARE_SIZE, h.SQUARE_SIZE)
+                            )
+
+
+                    
     pygame.display.update()
