@@ -21,7 +21,7 @@ while 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             sys.exit()
-
+    
     h.fill_empty_board()
     
     if user is None:
@@ -47,16 +47,16 @@ while 1:
         h.screen.blit(play_black, play_black_rect)
                         
         # handles user choice
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        click, _, _ = pygame.mouse.get_pressed()
+        if click == 1:
             mouse_pos = pygame.mouse.get_pos()
             if play_black_button.collidepoint(mouse_pos):
                 user = h.black
             elif play_white_button.collidepoint(mouse_pos):
                 user = h.white
                 ai_turn = True
-    
-    # after user is chosen, draw board
     else:
+        # after user is chosen, draw board
         h.fill_empty_board()
         
         # draw black pieces
@@ -93,27 +93,24 @@ while 1:
             pass
 
         #get row and column of click event
-        
         else:
-            second_click = False
+            click, _, _ = pygame.mouse.get_pressed()
+            if click == 1:
+                mouse_pos = pygame.mouse.get_pos()
+                col = math.trunc(mouse_pos[0] / 100)
+                row = math.trunc(mouse_pos[1] / 100)
+                col_row = (col, row)
+                print(col_row)
 
-            if event.type == pygame.MOUSEBUTTONUP and not second_click:
-                    mouse_pos = pygame.mouse.get_pos()
-                    col = math.trunc(mouse_pos[0] / 100)
-                    row = math.trunc(mouse_pos[1] / 100)
-                    col_row = (col, row)
+                if board[row][col] == user:
+                    first_click = True
+                    available_actions = h.actions(board, col, row, user)
+                    print(available_actions)
 
-                    if board[row][col] == user:
-                        first_click = True
-                        available_actions = h.actions(board, col, row, user)
-
-                        #shows possible legal moves
-                        for move in available_actions:
-                            pygame.draw.rect(
-                                h.screen, h.RED, (move[1] * h.SQUARE_SIZE, move[0] * h.SQUARE_SIZE, 
-                                h.SQUARE_SIZE, h.SQUARE_SIZE)
-                            )
-
-
-                    
+                    #shows possible legal moves
+                    for move in available_actions:
+                        pygame.draw.rect(
+                            h.screen, h.RED, (move[1] * h.SQUARE_SIZE, move[0] * h.SQUARE_SIZE, 
+                            h.SQUARE_SIZE, h.SQUARE_SIZE)
+                        )
     pygame.display.update()
