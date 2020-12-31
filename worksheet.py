@@ -1,5 +1,5 @@
 import pygame, sys, time
-import helpers as h
+import worksheet_helpers as h
 import math
 
 pygame.init()
@@ -16,6 +16,7 @@ play_as_font = pygame.font.Font("icons_and_fonts/Quicksand-VariableFont_wght.ttf
 user = None
 board = h.initial_board()
 ai_turn = False
+selected_piece = None
 
 while 1:
     for event in pygame.event.get():
@@ -90,8 +91,15 @@ while 1:
             mouse = pygame.mouse.get_pos()
             for i in range(8):
                 for j in range(8):
-                    if (board[i][j] == user and tiles[i][j].collidepoint(mouse)):
-                        available_actions = h.actions(board,j, i, user)
-                        print(available_actions)
-
+                    if not selected_piece:
+                        if (board[i][j] == user and tiles[i][j].collidepoint(mouse)):
+                            selected_piece = (i, j)
+                            available_actions = h.actions(board,j, i, user)
+                        
+                    elif selected_piece and board[i][j] == h.EMPTY:
+                        move_position = (i, j)
+                        if move_position in available_actions:
+                            print("yes")
+                            
+                            
     pygame.display.update()
